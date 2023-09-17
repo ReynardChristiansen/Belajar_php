@@ -13,8 +13,19 @@ class publisherController extends Controller
     }
 
     public function storePublisher(Request $request){
+        #pake email validate buat tipe nya email, dns biar dia valid cth @gmail.com, dll
+        $request->validate([
+            'publisherName' => 'required|unique:publishers,publisherName|min:5|max:20|email:dns',
+            'image' => 'required|file|max:30000|mimes:png,jpg'
+        ]);
+
+        $extension = $request->file('image')->getClientOriginalExtension();
+        $filename = $request->publisherName.'.'.$extension;
+        $request->file('image')->storeAs('/public/publishers/', $filename);
+
         Publisher::create([
             'publisherName' => $request->publisherName,
+            'image' => $filename,
         ]);
 
         return redirect(route('homepage'));

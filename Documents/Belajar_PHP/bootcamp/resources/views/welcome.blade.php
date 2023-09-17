@@ -67,6 +67,20 @@
 @endforeach
 </div>
 
+<form action="/sendMail">
+  <div class="mb-3">
+    <label for="from" class="form-label">From</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="from">
+  </div>
+
+  <div class="mb-3">
+    <label for="message" class="form-label">Message</label>
+    <input type="text" class="form-control" id="message" name="message">
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
 

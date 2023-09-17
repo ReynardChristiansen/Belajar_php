@@ -9,10 +9,12 @@
 <body>
     
 <div class="d-flex m-5">
-
+    
+    
 
     <div class="card m-5" style="width: 18rem;">
         <div class="card-body">
+            <img src="{{asset('./storage/publishers/'.$publisher->image)}}" class="img-thumbnail" alt="...">
             <h5 class="card-title">{{$publisher->publisherName}}</h5>
             @foreach ($publisher->books as $book)
                 <p class="card-text">{{$book->bookTittle}}</p>

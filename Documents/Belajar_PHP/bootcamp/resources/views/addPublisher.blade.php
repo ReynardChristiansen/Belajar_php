@@ -12,12 +12,27 @@
 <p class="h1 m-5">Add Publisher</p>
 
     
-<form class="m-5" method="POST" action="/store/publisher">
+<form class="m-5" method="POST" action="/store/publisher" enctype="multipart/form-data">
     @csrf
   <div class="mb-5">
     <label for="publisher-name" class="form-label">Publisher Name</label>
     <input type="text" class="form-control" id="publisher-name" name="publisherName">
+
+    @error('publisherName')
+    <div class="alert alert-danger">{{$message}}</div>
+    @enderror
   </div>
+
+  <div class="mb-5">
+    <label for="image" class="form-label">Publisher Image</label>
+    <input type="file" class="form-control" id="image" name="image">
+
+    @error('image')
+    <div class="alert alert-danger">{{$message}}</div>
+    @enderror
+  </div>
+
+  
 
   <button type="submit" class="btn btn-primary">Submit</button>
 

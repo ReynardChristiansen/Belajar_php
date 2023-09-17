@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\BookController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\publisherController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
@@ -23,7 +24,7 @@ Route::get('/books/{id}', [BookController::class, 'book'])->name('bookDetail');
 Route::get('/edit/book/{id}', [BookController::class, 'editBook'])->name('editBook');
 Route::Patch('/update/book/{id}', [BookController::class, 'updateBook'])->name('updateBook');
 Route::Delete('/delete/book/{id}', [BookController::class, 'deleteBook'])->name('deleteBook');
-Route::get('/add/publisher', [publisherController::class, 'create'])->name('addPublisher')->middleware('auth');
+Route::get('/add/publisher', [publisherController::class, 'create'])->name('addPublisher');
 Route::POST('/store/publisher', [publisherController::class, 'storePublisher'])->name('storePublisher');
 Route::get('/show/publisher', [publisherController::class, 'showPublisher'])->name('showPublisher');
 Route::get('/publisher/{id}', [publisherController::class, 'detail'])->name('publisherDetail');
@@ -35,3 +36,4 @@ Route::POST('/store/user', [AuthController::class, 'register'])->name('storUser'
 Route::get('/login', [AuthController::class, 'loginPage'])->name('loginPage')->middleware('guest');
 Route::POST('/login/auth', [AuthController::class, 'authenticate'])->name('auth')->middleware('guest');
 Route::POST('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+Route::get('/sendMail', [MailController::class, 'sendMail']);
